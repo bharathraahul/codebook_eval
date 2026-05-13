@@ -4,12 +4,12 @@ import pandas as pd
 import requests
 from sklearn.metrics import f1_score
 
-REPO       = '/home/cc/Zero-Shot-PLOVER'
+REPO       = '/home/cc/codebook_eval'
 LLM_MODEL  = 'gemma2:9b'
 OLLAMA_URL = 'http://localhost:11434/api/generate'
 
 LABELS = ['COOPERATION', 'CONFLICT']
-LABEL_MAP = {'COOPERATION': 1, 'CONFLICT': 0}
+LABEL_MAP = {'COOPERATION': 0, 'CONFLICT': 1}
 
 ALIASES = {
     'COOPERATIVE': 'COOPERATION', 'COOP': 'COOPERATION',
@@ -145,6 +145,9 @@ def load_aw_data(limit=None):
         print(f"  ERROR: {path} not found")
         sys.exit(1)
     df = pd.read_csv(path, sep='\t')
+    valid_prefixes = ['Life','Conflict','Justice','Personnel','Contact','Transaction','Business']
+    df = df[df['event_type'].apply(lambda et: any(et.startswith(p) for p in valid_prefixes))]
+    df = df.reset_index(drop=True)
     df['source_clean'] = df['source'].apply(lambda x: str(x).split(":")[-1])
     df['target_clean'] = df['target'].apply(lambda x: str(x).split(":")[-1])
     if limit:
