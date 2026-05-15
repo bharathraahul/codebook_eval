@@ -1,0 +1,17 @@
+
+============================================================
+  AW RESULTS — AW_test (805 examples)
+  Model: mistral:7b-instruct-v0.3-fp16
+============================================================
+
+Method                          Binary F1
+──────────────────────────────────────────
+  LLM No Codebook                  78.6
+  LLM With Codebook                76.4
+  LLM CoT (No CB)                  68.7
+  LLM ICL                          79.8
+  LLM CB v2                        81.7
+──────────────────────────────────────────
+  [Paper] GPT-3.5                  76.3
+  [Paper] GPT-4                    87.0
+  [Paper] ZSP Tree                 88.0
