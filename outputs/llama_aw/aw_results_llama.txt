@@ -1,0 +1,17 @@
+
+============================================================
+  AW RESULTS — AW_test (805 examples)
+  Model: llama3.1:8b-instruct-fp16
+============================================================
+
+Method                          Binary F1
+──────────────────────────────────────────
+  LLM No Codebook                  74.3
+  LLM With Codebook                79.3
+  LLM CoT (No CB)                  44.1
+  LLM ICL                          81.4
+  LLM CB v2                        81.0
+──────────────────────────────────────────
+  [Paper] GPT-3.5                  76.3
+  [Paper] GPT-4                    87.0
+  [Paper] ZSP Tree                 88.0
