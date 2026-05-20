@@ -251,6 +251,22 @@ def run_llm_cb_v2(limit=None):
     return run_experiment("LLM CB v2", prompt_fn,
                           f'{REPO}/outputs/aw_llm_cb_v2.csv', limit=limit)
 
+def run_llm_cot_cb(limit=None):
+    def prompt_fn(sentence):
+        return (f"You are a political event classifier.\n\n"
+                f"LABEL DEFINITIONS:\n{CODEBOOK}\n\n"
+                f"Sentence: {sentence}\n\n"
+                f"Think step by step:\n"
+                f"1. Who is the source, who is the target?\n"
+                f"2. What is the main action described?\n"
+                f"3. Is this action verbal or material?\n"
+                f"4. Is this cooperative or conflictual?\n"
+                f"5. Based on the codebook definitions, which label fits best: "
+                f"COOPERATION or CONFLICT?\n\n"
+                f"ANSWER: ")
+    return run_experiment("LLM CoT+CB", prompt_fn,
+                          f'{REPO}/outputs/aw_llm_cot_cb.csv', limit=limit)
+
 
 def print_table():
     print(f"\n{'='*60}")
@@ -265,6 +281,7 @@ def print_table():
         ('LLM CoT (No CB)', 'aw_llm_cot_no_cb.csv'),
         ('LLM ICL', 'aw_llm_icl.csv'),
         ('LLM CB v2', 'aw_llm_cb_v2.csv'),
+        ('LLM CoT+CB', 'aw_llm_cot_cb.csv'),
     ]:
         path = f'{REPO}/outputs/{csv_name}'
         if os.path.exists(path):
@@ -288,7 +305,7 @@ def print_table():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--step', required=True,
-        choices=['llm_no_cb','llm_cb','llm_cot_no_cb','llm_icl','llm_cb_v2',
+        choices=['llm_no_cb','llm_cb','llm_cot_no_cb','llm_icl','llm_cb_v2','llm_cot_cb',
                  'all','table'])
     parser.add_argument('--limit', type=int, default=None)
     parser.add_argument('--model', type=str, default=None)
@@ -306,6 +323,7 @@ def main():
         'llm_cot_no_cb': lambda: run_llm_cot_no_cb(args.limit),
         'llm_icl':       lambda: run_llm_icl(args.limit),
         'llm_cb_v2':     lambda: run_llm_cb_v2(args.limit),
+        'llm_cot_cb':    lambda: run_llm_cot_cb(args.limit),
         'all':           lambda: [run_llm_no_codebook(args.limit),
                                   run_llm_with_codebook(args.limit),
                                   run_llm_cot_no_cb(args.limit),
