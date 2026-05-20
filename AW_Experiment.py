@@ -98,7 +98,7 @@ def query_ollama(prompt, retries=3):
             r = requests.post(OLLAMA_URL, json={
                 'model': LLM_MODEL, 'prompt': prompt,
                 'stream': False,
-                'options': {'temperature': 0.0, 'num_predict': 60}
+                'options': {'temperature': 0.0, 'num_predict': 200}
             }, timeout=120)
             return r.json().get('response', '').strip()
         except Exception as e:
