@@ -1,0 +1,15 @@
+
+=======================================================
+  A/W Binary Classification — RAG v1 Comparison Table
+=======================================================
+  Method                     Binary F1
+  -----------------------------------
+  RAG Codebook                    13.2
+  RAG CB + Examples               13.7
+  RAG Noisy                       14.4
+  -----------------------------------
+  Paper GPT-3.5            76.3
+  Paper GPT-4              87.0
+
+
+Done.

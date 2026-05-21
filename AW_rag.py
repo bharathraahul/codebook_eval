@@ -26,7 +26,7 @@ except ImportError:
     print("  pip install sentence-transformers faiss-cpu --break-system-packages")
     sys.exit(1)
 
-REPO       = os.environ.get('PLOVER_REPO', '/home/cc/Zero-Shot-PLOVER')
+REPO       = os.environ.get('PLOVER_REPO', '/home/cc/codebook_eval')
 LLM_MODEL  = os.environ.get('PLOVER_LLM', 'gemma2:9b')
 OLLAMA_URL = os.environ.get('OLLAMA_URL', 'http://localhost:11434/api/generate')
 EMBED_MODEL = os.environ.get('EMBED_MODEL', 'all-MiniLM-L6-v2')
@@ -320,6 +320,9 @@ def load_test_data(limit=None):
         print(f"  ERROR: Test data not found at {path}")
         sys.exit(1)
     df = pd.read_csv(path, sep='\t')
+    valid_prefixes = ["Life","Conflict","Justice","Personnel","Contact","Transaction","Business"]
+    df = df[df["event_type"].apply(lambda et: any(et.startswith(p) for p in valid_prefixes))]
+    df = df.reset_index(drop=True)
     if limit:
         df = df.head(limit)
     return df
