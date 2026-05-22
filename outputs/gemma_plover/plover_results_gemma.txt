@@ -1,0 +1,24 @@
+
+======================================================================
+  FINAL RESULTS — PLOVER PLV_test (1033 examples)
+  Model: gemma2:9b for LLM methods
+======================================================================
+
+Method                         Binary     Quad     Root      Avg
+──────────────────────────────────────────────────────────────
+ZSP Tree                            —        —        —        —
+ZSP Tiny                            —        —        —        —
+ZSP Full                            —        —        —        —
+LLM No Codebook                  90.9     65.7     52.0     69.5
+LLM With Codebook                92.7     80.4     63.6     78.9
+LLM CoT                          49.0     30.9     19.6     33.1
+LLM ICL                          94.7     71.5     57.3     74.5
+LLM CB v2                        96.0     86.9     71.8     84.9
+──────────────────────────────────────────────────────────────
+[Paper] ZSP Tree                 96.4     89.6     82.4     89.5
+[Paper] ZSP Tiny                 90.5     69.5     50.8     70.3
+[Paper] ZSP Full                 91.0     73.4     55.7     73.4
+[Paper] GPT-3.5                  90.1     66.2     40.9     65.7
+[Paper] GPT-4                    93.4     76.7     61.5     77.2
+
+Saved → /home/cc/codebook_eval/outputs/final_results.csv
