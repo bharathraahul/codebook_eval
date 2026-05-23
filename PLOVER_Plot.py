@@ -73,8 +73,8 @@ for i, level in enumerate(levels):
 
 axes[0].legend(fontsize=9, loc='lower left', framealpha=0.95, edgecolor='#D1D5DB')
 plt.tight_layout(w_pad=2)
-plt.savefig('/home/claude/fig1_main_results.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('/home/claude/fig1_main_results.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig1_main_results.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig1_main_results.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("fig1 done")
 
@@ -110,8 +110,8 @@ ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('/home/claude/fig2_cbv2_comparison.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('/home/claude/fig2_cbv2_comparison.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig2_cbv2_comparison.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig2_cbv2_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("fig2 done")
 
@@ -148,8 +148,8 @@ ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('/home/claude/fig3_root_by_method.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('/home/claude/fig3_root_by_method.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig3_root_by_method.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig3_root_by_method.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("fig3 done")
 
@@ -180,8 +180,8 @@ cbar = plt.colorbar(im, ax=ax, shrink=0.8, pad=0.02)
 cbar.set_label('Macro F1', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('/home/claude/fig4_heatmap.pdf', dpi=300, bbox_inches='tight')
-plt.savefig('/home/claude/fig4_heatmap.png', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig4_heatmap.pdf', dpi=300, bbox_inches='tight')
+plt.savefig('/home/cc/codebook_eval/plots/plover_plots/fig4_heatmap.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("fig4 done")
 
