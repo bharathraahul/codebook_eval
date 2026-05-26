@@ -23,7 +23,7 @@ import pandas as pd
 import requests
 from sklearn.metrics import f1_score
 
-REPO       = '/home/cc/Zero-Shot-PLOVER'
+REPO       = '/home/cc/codebook_eval'
 LLM_MODEL  = 'gemma2:9b'
 OLLAMA_URL = 'http://localhost:11434/api/generate'
 
@@ -133,7 +133,7 @@ def query_ollama(prompt, retries=3):
             r = requests.post(OLLAMA_URL, json={
                 'model': LLM_MODEL, 'prompt': prompt,
                 'stream': False,
-                'options': {'temperature': 0.0, 'num_predict': 60}
+                'options': {'temperature': 0.0, 'num_predict': 200}
             }, timeout=120)
             return r.json().get('response', '').strip()
         except Exception as e:
@@ -426,7 +426,7 @@ def print_final_table():
     for name, csv_name in [('LLM No Codebook','llm_no_codebook.csv'),
                             ('LLM With Codebook','llm_with_codebook.csv'),
                             ('LLM CoT','llm_cot.csv'),
-                            ('LLM ICL','llm_icl.csv')]:
+                            ('LLM ICL','llm_icl.csv'),('LLM CB v2','llm_cb_v2.csv')]:
         path = f'{REPO}/outputs/{csv_name}'
         if os.path.exists(path):
             df = pd.read_csv(path)
